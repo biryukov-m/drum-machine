@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Black+Ops+One&display=swap");
+$logo-font: "Audiowide", cursive;
+$content-font: "Black Ops One", cursive;
+$pad-size: 100px;
+
+body {
+  background: rgb(53, 76, 134);
+  background: linear-gradient(
+    45deg,
+    rgba(53, 76, 134, 1) 0%,
+    rgba(39, 166, 137, 1) 100%
+  );
+}
+.machine-wrapper {
+  display: flex;
+  // justify-items: center;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 98vh;
+}
+#drum-machine {
+  //   margin: 0 auto;
+  background-color: #2d3436;
+  background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+  border-radius: 1px;
+  box-shadow: 1px 1px 2px 4px #101010;
+}
+
+#header {
+  color: white;
+  // position: relative;
+  // height: 80px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  padding: 10px 0;
+}
+
+#logo {
+  // position: absolute;
+  // left: 10px;
+  // width: 30px;
+  font-family: $logo-font;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px;
+  .top {
+    font-size: 1.5rem;
+  }
+  .bottom {
+    font-size: 1.1rem;
+  }
+}
+#model {
+  display: flex;
+  align-items: center;
+  font-family: $content-font;
+  padding-right: 10px;
+  font-size: 1.2rem;
+}
+#display-wrapper {
+  padding: 10px 30px;
+  background: linear-gradient(
+    180deg,
+    #d0d8d0f2 0%,
+    #9ba29bf2 40%,
+    #99a099f2 60%,
+    #d0d8d0f2 100%
+  );
+  box-shadow: inset 1px -1px 7px 3px #4a4a4a, 0 0 1px 1px #ffffff80;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#display {
+  font-family: $content-font;
+  color: black;
+  font-size: 2.2rem;
+  display: inline-block;
+}
+
+#main-block {
+  display: grid;
+  grid-template-columns: 300px auto;
+  padding: 35px;
+  font-family: $content-font;
+}
+
+#side {
+  padding: 25px 10px;
+  border: 1px white solid;
+  .volume {
+    display: flex;
+    label {
+      background: white;
+      padding: 0 2px;
+      border-radius: 4px;
+      font-size: 1rem;
+      color: black;
+      margin-right: 10px;
+    }
+  }
+}
+#drum-pads {
+  display: grid;
+  grid-template-columns: $pad-size $pad-size $pad-size $pad-size;
+  grid-template-rows: $pad-size $pad-size $pad-size $pad-size;
+  grid-gap: 20px;
+  padding: 20px;
+  box-shadow: 0 0 1px 1px #00000054;
+  border-radius: 1px;
+}
+
+.drum-pad {
+  background: linear-gradient(100deg, #131313, #272727);
+  box-shadow: 0 0 6px 1px #cc2121bd;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #cc212194;
+  text-shadow: 1px 1px 6px #cc212180;
+}
+.pressed {
+  background: linear-gradient(100deg, #131313, #272727);
+  box-shadow: 0 0 9px 4px #d81111f0, inset 0 0 15px 10px #0a0a0a;
+  color: #cc2121eb;
+  text-shadow: 1px 1px 2px #cc2121;
+}
+
+#footer {
+  grid-area: footer;
+}
