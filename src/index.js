@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
 import * as serviceWorker from "./serviceWorker";
@@ -83,81 +83,70 @@ const bankOne = [
   },
 ];
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      volume: 1,
-      currentPadBank: bankOne,
-      display: " ",
-    };
-    this.volumeHandler = this.volumeHandler.bind(this);
-    this.displayHandler = this.displayHandler.bind(this);
-    this.clearDisplay = this.clearDisplay.bind(this);
+function App() {
+  const [volume, setVolume] = useState(1);
+  const [currentPadBank, setCurrentPadBank] = useState(bankOne);
+  const [display, setDisplay] = useState(' ');
+
+  function displayHandler(input) {
+    setDisplay(input);
   }
 
-  displayHandler(input) {
-    this.setState({ display: input });
+  function clearDisplay() {
+    setDisplay(' ');
   }
 
-  clearDisplay() {
-    this.setState({ display: "  " });
+  function volumeHandler(e) {
+    setVolume(e.target.value);
+    displayHandler("Volume: " + Math.round(e.target.value * 100) + "%");
   }
 
-  volumeHandler(e) {
-    this.setState({
-      volume: e.target.value,
-    });
-    this.displayHandler("Volume: " + Math.round(e.target.value * 100) + "%");
-  }
 
-  render() {
-    return (
-      <div className="machine-wrapper">
-        <div id="drum-machine">
-          <div id="header">
-            <div id="logo">
-              <span className="top">Biryukov</span>
-              <span className="bottom">Professional</span>
-            </div>
-            <div id="display-wrapper">
-              <span id="display" className="animate__animated animate__fadeIn">
-                {this.state.display}
-              </span>
-            </div>
-            <span id="model">Covid202</span>
+  return (
+    <div className="machine-wrapper">
+      <div id="drum-machine">
+        <div id="header">
+          <div id="logo">
+            <span className="top">Biryukov</span>
+            <span className="bottom">Professional</span>
           </div>
-          <div id="main-block">
-            <div id="side">
-              <div className="volume">
-                <label htmlFor="volume">Volume</label>
-                <input
-                  onChange={this.volumeHandler}
-                  id="volume"
-                  min="0"
-                  max="1"
-                  step="0.05"
-                  type="range"
-                  value={this.state.volume}
-                ></input>
-              </div>
-              <div className="indicators">1 2 3</div>
-            </div>
-
-            <PadBank
-              currentPadBank={this.state.currentPadBank}
-              displayHandler={this.displayHandler}
-              clearDisplay={this.clearDisplay}
-              volume={this.state.volume}
-            />
-
+          <div id="display-wrapper">
+            <span id="display" className="animate__animated animate__fadeIn">
+              {display}
+            </span>
           </div>
-
-          <div id="footer"></div>
+          <span id="model">Covid202</span>
         </div>
+        <div id="main-block">
+          <div id="side">
+            <div className="volume">
+              <label htmlFor="volume">Volume</label>
+              <input
+                onChange={volumeHandler}
+                id="volume"
+                min="0"
+                max="1"
+                step="0.05"
+                type="range"
+                value={volume}
+              ></input>
+            </div>
+            <div className="indicators">1 2 3</div>
+          </div>
+
+          <PadBank
+            currentPadBank={currentPadBank}
+            displayHandler={displayHandler}
+            clearDisplay={clearDisplay}
+            volume={volume}
+          />
+
+        </div>
+
+        <div id="footer"></div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
