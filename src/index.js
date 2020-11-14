@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import * as serviceWorker from "./serviceWorker";
 import PadBank from "./components/padbank.js";
+import Volume from "./components/volume.js";
 
 const bankOne = [
   {
@@ -84,10 +85,12 @@ const bankOne = [
 ];
 
 function App() {
-  const [volume, setVolume] = useState(1);
   const [currentPadBank, setCurrentPadBank] = useState(bankOne);
   const [display, setDisplay] = useState(' ');
-
+  const [volume, setVolume] = useState(1);
+  if (false) {
+    setCurrentPadBank(bankOne);
+  }
   function displayHandler(input) {
     setDisplay(input);
   }
@@ -95,12 +98,6 @@ function App() {
   function clearDisplay() {
     setDisplay(' ');
   }
-
-  function volumeHandler(e) {
-    setVolume(e.target.value);
-    displayHandler("Volume: " + Math.round(e.target.value * 100) + "%");
-  }
-
 
   return (
     <div className="machine-wrapper">
@@ -115,34 +112,24 @@ function App() {
               {display}
             </span>
           </div>
-          <span id="model">Covid202</span>
+          <span id="model">Flex 2000</span>
         </div>
         <div id="main-block">
           <div id="side">
-            <div className="volume">
-              <label htmlFor="volume">Volume</label>
-              <input
-                onChange={volumeHandler}
-                id="volume"
-                min="0"
-                max="1"
-                step="0.05"
-                type="range"
-                value={volume}
-              ></input>
-            </div>
+            <Volume
+              displayHandler={displayHandler}
+              volume={volume}
+              setVolume={setVolume}
+            />
             <div className="indicators">1 2 3</div>
           </div>
-
           <PadBank
             currentPadBank={currentPadBank}
             displayHandler={displayHandler}
             clearDisplay={clearDisplay}
             volume={volume}
           />
-
         </div>
-
         <div id="footer"></div>
       </div>
     </div>
@@ -150,5 +137,4 @@ function App() {
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
-
 serviceWorker.unregister();

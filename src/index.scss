@@ -1,65 +1,72 @@
 @import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Black+Ops+One&display=swap");
 $logo-font: "Audiowide", cursive;
 $content-font: "Black Ops One", cursive;
-$pad-size: 100px;
+$pad-size: 90px;
 
-body {
-  background: rgb(53, 76, 134);
-  background: linear-gradient(
-    45deg,
-    rgba(53, 76, 134, 1) 0%,
-    rgba(39, 166, 137, 1) 100%
-  );
+html {
+  position: relative;
+}
+html::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./img/pexels-maurício-mascaro-801863.jpg");
+  background-size: cover;
+  filter: hue-rotate(150deg);
+  // background-position-x: 300px;
+  background-position-y: -800px;
 }
 .machine-wrapper {
+  position: relative;
   display: flex;
-  // justify-items: center;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 98vh;
+  height: 98.3vh;
 }
 #drum-machine {
-  //   margin: 0 auto;
-  background-color: #2d3436;
-  background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
-  border-radius: 1px;
-  box-shadow: 1px 1px 2px 4px #101010;
+  // background-color: #2d3436;
+  // background-image: linear-gradient(315deg, #2d3436 0%, #000000 74%);
+  background-image: linear-gradient(315deg, #1b1b1bfa 0%, #2a2e30f6 74%);
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 1px 1px 4px 1px #101010d9;
 }
 
 #header {
   color: white;
-  // position: relative;
-  // height: 80px;
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  padding: 10px 0;
+  grid-template-columns: auto 1fr 70px;
+  grid-gap: 20px;
+  padding: 0 0 35px 0;
+  height: 75px;
 }
 
 #logo {
-  // position: absolute;
-  // left: 10px;
-  // width: 30px;
   font-family: $logo-font;
   display: flex;
   flex-direction: column;
-  padding: 5px 10px;
+
+  align-items: flex-start;
+  justify-content: center;
   .top {
-    font-size: 1.5rem;
+    font-size: 1.55rem;
   }
   .bottom {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 }
 #model {
   display: flex;
-  align-items: center;
   font-family: $content-font;
-  padding-right: 10px;
-  font-size: 1.2rem;
+  align-items: center;
+  font-size: 1.5rem;
+  text-align: left;
 }
 #display-wrapper {
-  padding: 10px 30px;
   background: linear-gradient(
     180deg,
     #d0d8d0f2 0%,
@@ -68,9 +75,8 @@ body {
     #d0d8d0f2 100%
   );
   box-shadow: inset 1px -1px 7px 3px #4a4a4a, 0 0 1px 1px #ffffff80;
-  width: 400px;
-  margin: 0 auto;
-  text-align: center;
+  display: flex;
+  align-items: center;
 }
 
 #display {
@@ -78,23 +84,21 @@ body {
   color: black;
   font-size: 2.2rem;
   display: inline-block;
+  margin: 0 auto;
 }
 
 #main-block {
   display: grid;
-  grid-template-columns: 300px auto;
-  padding: 35px;
+  grid-template-columns: 290px auto;
   font-family: $content-font;
 }
 
 #side {
-  padding: 25px 10px;
-  border: 1px white solid;
   .volume {
     display: flex;
     label {
       background: white;
-      padding: 0 2px;
+      padding: 4px 5px 5px 5px;
       border-radius: 4px;
       font-size: 1rem;
       color: black;
@@ -105,11 +109,9 @@ body {
 #drum-pads {
   display: grid;
   grid-template-columns: $pad-size $pad-size $pad-size $pad-size;
-  grid-template-rows: $pad-size $pad-size $pad-size $pad-size;
-  grid-gap: 20px;
-  padding: 20px;
-  box-shadow: 0 0 1px 1px #00000054;
-  border-radius: 1px;
+  grid-template-rows: $pad-size $pad-size $pad-size;
+  row-gap: 15px;
+  column-gap: 20px;
 }
 
 .drum-pad {
