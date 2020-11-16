@@ -94,15 +94,60 @@ html::before {
 }
 
 #side {
+  label {
+    background: white;
+    padding: 4px 5px 5px 5px;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: black;
+  }
   .volume {
     display: flex;
+    padding-bottom: 20px;
     label {
-      background: white;
-      padding: 4px 5px 5px 5px;
-      border-radius: 4px;
-      font-size: 1rem;
-      color: black;
       margin-right: 10px;
+    }
+  }
+  .bank {
+    position: relative;
+    hr {
+      position: absolute;
+      width: 80px;
+      color: white;
+      right: 16px;
+      top: 5px;
+      &.left {
+        left: -161px;
+      }
+    }
+    .label-wrapper {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 15px;
+    }
+    .bank-selectors {
+      display: grid;
+      grid-template-columns: 20px 20px 20px;
+      grid-template-rows: 20px 20px;
+      grid-template-areas:
+        "lab lab lab"
+        "butA butB butC";
+      grid-column-gap: 15px;
+      grid-row-gap: 5px;
+    }
+    label {
+      // grid-area: lab;
+    }
+    .button {
+      &.A {
+        grid-area: butA;
+      }
+      &.B {
+        grid-area: butB;
+      }
+      &.C {
+        grid-area: butC;
+      }
     }
   }
 }

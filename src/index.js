@@ -121,7 +121,26 @@ function App() {
               volume={volume}
               setVolume={setVolume}
             />
-            <div className="indicators">1 2 3</div>
+
+            <div className="bank">
+              <hr className="left"></hr>
+              <hr className="right"></hr>
+              <div className="label-wrapper">
+                <label>
+                  Pad bank
+                </label>
+
+              </div>
+
+              <div className="bank-selectors">
+                <label className="selector-label">A</label>
+                <div className="button A">*</div>
+                <label className="selector-label">B</label>
+                <div className="button B">*</div>
+                <label className="selector-label">C</label>
+                <div className="button C">*</div>
+              </div>
+            </div>
           </div>
           <PadBank
             currentPadBank={currentPadBank}
