@@ -127,18 +127,48 @@ html::before {
     }
     .bank-selectors {
       display: grid;
-      grid-template-columns: 20px 20px 20px;
-      grid-template-rows: 20px 20px;
-      grid-template-areas:
-        "lab lab lab"
-        "butA butB butC";
+      grid-template-columns: 75px 75px 75px;
+      grid-template-rows: 15px 13px;
+      grid-template-areas: "lab lab lab" "butA butB butC";
       grid-column-gap: 15px;
-      grid-row-gap: 5px;
+      grid-row-gap: 0;
+      justify-content: center;
+      label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border-radius: 0;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
     }
-    label {
-      // grid-area: lab;
-    }
+
     .button {
+      // padding: 10px 18px;
+      // border: 1px solid black;
+      background: linear-gradient(
+        180deg,
+        #d0d8d0f2 0%,
+        #9ba29bf2 40%,
+        #99a099f2 60%,
+        #d0d8d0f2 100%
+      );
+      box-shadow: inset 1px -1px 7px 3px #4a4a4a;
+
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      &.active {
+        background: linear-gradient(
+          180deg,
+          #37a237f2 0%,
+          #17ac17f2 40%,
+          #2dca2df2 60%,
+          #29ce29f2 100%
+        );
+        box-shadow: inset 1px -1px 7px 3px #5fac4f;
+      }
+
       &.A {
         grid-area: butA;
       }
