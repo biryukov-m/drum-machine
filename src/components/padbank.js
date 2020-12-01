@@ -7,10 +7,10 @@ function PadBank(props) {
     padBank = props.currentPadBank.map((drumObj, i, padBankArr) => {
         return (
             <DrumPad
-                clip={padBankArr[i].url}
-                clipId={padBankArr[i].id}
-                keyCode={padBankArr[i].keyCode}
-                keyTrigger={padBankArr[i].keyTrigger}
+                clip={drumObj.url}
+                clipId={drumObj.id}
+                keyCode={drumObj.keyCode}
+                keyTrigger={drumObj.keyTrigger}
                 displayHandler={props.displayHandler}
                 clearDisplay={props.clearDisplay}
                 volume={props.volume}
