@@ -4,7 +4,7 @@ import DrumPad from "./drumpad.js";
 function PadBank(props) {
 
     let padBank;
-    padBank = props.currentPadBank.map((drumObj, i, padBankArr) => {
+    padBank = props.currentPadBank.map((drumObj) => {
         return (
             <DrumPad
                 clip={drumObj.url}
