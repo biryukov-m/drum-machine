@@ -4,13 +4,13 @@ import DrumPad from "./drumpad.js";
 function PadBank(props) {
 
     let padBank;
-    padBank = props.currentPadBank.map((drumObj, i, padBankArr) => {
+    padBank = props.currentPadBank.map((drumObj) => {
         return (
             <DrumPad
-                clip={padBankArr[i].url}
-                clipId={padBankArr[i].id}
-                keyCode={padBankArr[i].keyCode}
-                keyTrigger={padBankArr[i].keyTrigger}
+                clip={drumObj.url}
+                clipId={drumObj.id}
+                keyCode={drumObj.keyCode}
+                keyTrigger={drumObj.keyTrigger}
                 displayHandler={props.displayHandler}
                 clearDisplay={props.clearDisplay}
                 volume={props.volume}
