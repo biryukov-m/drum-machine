@@ -17,7 +17,7 @@ function PadBank(props) {
         )
     );
 
-    return (<div id="drum-pads" >{PADS}</div>)
+    return (<div className="drum-pads" >{PADS}</div>)
 }
 
 

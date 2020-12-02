@@ -26,27 +26,26 @@ function App() {
 
   return (
     <div className="machine-wrapper">
-      <div id="drum-machine">
-        <div id="header">
-          <div id="logo">
+      <div className="drum-machine">
+        <div className="header">
+          <div className="logo">
             <span className="top">Biryukov</span>
             <span className="bottom">Professional</span>
           </div>
-          <div id="display-wrapper">
-            <span id="display">
+          <div className="display-wrapper">
+            <span className="display">
               {display}
             </span>
           </div>
-          <span id="model">Flex 2000</span>
+          <span className="model">Flex 2000</span>
         </div>
-        <div id="main-block">
-          <div id="side">
+        <div className="main-block">
+          <div className="side">
             <Volume
               displayHandler={displayHandler}
               volume={volume}
               setVolume={setVolume}
             />
-
             <div className="bank">
               <hr className="left"></hr>
               <hr className="right"></hr>
@@ -55,7 +54,6 @@ function App() {
                   Pad bank
                 </label>
               </div>
-
               <div className="bank-selectors">
                 <label className="selector-label">A</label>
                 <div onClick={() => setBank('A')} className={`button A ${currentPadBank === BANKS.A ? 'active' : ''}`}></div>
@@ -73,7 +71,7 @@ function App() {
             volume={volume}
           />
         </div>
-        <div id="footer"></div>
+        <div className="footer"></div>
       </div>
     </div>
   );

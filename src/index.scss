@@ -26,14 +26,14 @@ html {
   width: 100%;
   height: 98.3vh;
 }
-#drum-machine {
+.drum-machine {
   background-image: linear-gradient(315deg, #1b1b1bfa 0%, #2a2e30f6 74%);
   padding: 30px 40px;
   border-radius: 20px;
   box-shadow: 1px 1px 4px 1px #101010d9;
 }
 
-#header {
+.header {
   color: white;
   display: grid;
   grid-template-columns: auto 1fr 70px;
@@ -42,7 +42,7 @@ html {
   height: 75px;
 }
 
-#logo {
+.logo {
   font-family: $logo-font;
   display: flex;
   flex-direction: column;
@@ -56,14 +56,14 @@ html {
     font-size: 1.2rem;
   }
 }
-#model {
+.model {
   display: flex;
   font-family: $content-font;
   align-items: center;
   font-size: 1.5rem;
   text-align: left;
 }
-#display-wrapper {
+.display-wrapper {
   background: linear-gradient(
     180deg,
     #d0d8d0f2 0%,
@@ -76,7 +76,7 @@ html {
   align-items: center;
 }
 
-#display {
+.display {
   font-family: $content-font;
   color: black;
   font-size: 2.2rem;
@@ -84,13 +84,13 @@ html {
   margin: 0 auto;
 }
 
-#main-block {
+.main-block {
   display: grid;
   grid-template-columns: 290px auto;
   font-family: $content-font;
 }
 
-#side {
+.side {
   label {
     background: white;
     padding: 4px 5px 5px 5px;
@@ -150,7 +150,6 @@ html {
         #d0d8d0f2 100%
       );
       box-shadow: inset 1px -1px 7px 3px #4a4a4a;
-
       border-bottom-left-radius: 4px;
       border-bottom-right-radius: 4px;
       &.active {
@@ -163,7 +162,6 @@ html {
         );
         box-shadow: inset 1px -1px 7px 3px #5fac4f;
       }
-
       &.A {
         grid-area: butA;
       }
@@ -176,7 +174,7 @@ html {
     }
   }
 }
-#drum-pads {
+.drum-pads {
   display: grid;
   grid-template-columns: $pad-size $pad-size $pad-size $pad-size;
   grid-template-rows: $pad-size $pad-size $pad-size;
@@ -202,6 +200,6 @@ html {
   text-shadow: 1px 1px 2px #cc2121;
 }
 
-#footer {
+.footer {
   grid-area: footer;
 }
