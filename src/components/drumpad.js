@@ -3,41 +3,41 @@ import React, { useState, useEffect } from "react";
 function DrumPad(props) {
     const [pressed, setPressed] = useState(false);
 
-    function playSound() {
-        const drumKeys = ["Q", "W", "E"];
-        if (drumKeys.indexOf(props.keyTrigger) >= 0) {
-            drumKeys.forEach((i) => {
-                document.getElementById(i).pause();
+    const playSound = () => {
+        const DRUM_KEYS = ["Q", "W", "E"];
+        if (DRUM_KEYS.indexOf(props.keyTrigger) >= 0) {
+            DRUM_KEYS.forEach((drumKey) => {
+                document.getElementById(drumKey).pause();
             });
         }
 
-        const sound = document.getElementById(props.keyTrigger);
-        sound.volume = props.volume;
-        sound.currentTime = 0;
-        sound.play();
+        const SOUND = document.getElementById(props.keyTrigger);
+        SOUND.volume = props.volume;
+        SOUND.currentTime = 0;
+        SOUND.play();
 
         props.displayHandler(props.clipId);
         setTimeout(() => props.clearDisplay(), 500);
     }
 
-    function handleKeyPress(e) {
-        if (e.keyCode === props.keyCode) {
+    const handleKeyPress = (event) => {
+        if (event.keyCode === props.keyCode) {
             playSound();
             setPressed(true);
         }
     }
 
-    function handleKeyUnPress(e) {
-        if (e.keyCode === props.keyCode) {
+    const handleKeyUnPress = (event) => {
+        if (event.keyCode === props.keyCode) {
             setPressed(false);
         }
     }
 
-    function handleMouseDown(e) {
+    const handleMouseDown = () => {
         setPressed(true);
     }
 
-    function handleMouseUp(e) {
+    const handleMouseUp = () => {
         setPressed(false);
     }
 
@@ -71,7 +71,7 @@ function DrumPad(props) {
 
     return (
         <div
-            className={pressed ? "drum-pad pressed" : "drum-pad"}
+            className={`drum-pad ${pressed ? 'pressed' : ''}`}
             onClick={playSound}
             id={props.clipId}
         >
