@@ -3,7 +3,7 @@ import DrumPad from "./drumpad.js";
 
 function PadBank(props) {
 
-    const PADS = props.currentPadBank.map(
+    const pads = props.currentPadBank.map(
         (drumObj) => (
             <DrumPad
                 clip={drumObj.url}
@@ -17,7 +17,7 @@ function PadBank(props) {
         )
     );
 
-    return (<div className="drum-pads" >{PADS}</div>)
+    return (<div className="drum-pads" >{pads}</div>)
 }
 
 

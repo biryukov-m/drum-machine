@@ -4,17 +4,17 @@ function DrumPad(props) {
     const [pressed, setPressed] = useState(false);
 
     const playSound = () => {
-        const DRUM_KEYS = ["Q", "W", "E"];
-        if (DRUM_KEYS.indexOf(props.keyTrigger) >= 0) {
-            DRUM_KEYS.forEach((drumKey) => {
+        const drumKeys = ["Q", "W", "E"];
+        if (drumKeys.indexOf(props.keyTrigger) >= 0) {
+            drumKeys.forEach((drumKey) => {
                 document.getElementById(drumKey).pause();
             });
         }
 
-        const SOUND = document.getElementById(props.keyTrigger);
-        SOUND.volume = props.volume;
-        SOUND.currentTime = 0;
-        SOUND.play();
+        const sound = document.getElementById(props.keyTrigger);
+        sound.volume = props.volume;
+        sound.currentTime = 0;
+        sound.play();
 
         props.displayHandler(props.clipId);
         setTimeout(() => props.clearDisplay(), 500);
