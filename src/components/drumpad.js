@@ -1,69 +1,66 @@
 import React, { useState, useEffect } from "react";
 
-function DrumPad(props) {
+function DrumPad({ clip, clipId, keyCode, keyTrigger, displayHandler, clearDisplay, volume }) {
     const [pressed, setPressed] = useState(false);
 
     const playSound = () => {
         const drumKeys = ["Q", "W", "E"];
-        if (drumKeys.indexOf(props.keyTrigger) >= 0) {
+        if (drumKeys.indexOf(keyTrigger) >= 0) {
             drumKeys.forEach((drumKey) => {
                 document.getElementById(drumKey).pause();
             });
         }
 
-        const sound = document.getElementById(props.keyTrigger);
-        sound.volume = props.volume;
+        const sound = document.getElementById(keyTrigger);
+        sound.volume = volume;
         sound.currentTime = 0;
         sound.play();
 
-        props.displayHandler(props.clipId);
-        setTimeout(() => props.clearDisplay(), 500);
+        displayHandler(clipId);
+        setTimeout(() => clearDisplay(), 500);
     }
 
     const handleKeyPress = (event) => {
-        if (event.keyCode === props.keyCode) {
+        if (event.keyCode === keyCode) {
             playSound();
             setPressed(true);
         }
     }
 
     const handleKeyUnPress = (event) => {
-        if (event.keyCode === props.keyCode) {
+        if (event.keyCode === keyCode) {
             setPressed(false);
         }
     }
 
-    const handleMouseDown = () => {
-        setPressed(true);
+    const toggleMouse = () => {
+        setPressed(!pressed);
     }
 
-    const handleMouseUp = () => {
-        setPressed(false);
-    }
 
     useEffect(() => {
         document.addEventListener("keydown", handleKeyPress);
         document.addEventListener("keyup", handleKeyUnPress);
         document
-            .getElementById(props.keyTrigger)
+            .getElementById(keyTrigger)
             .closest("div")
-            .addEventListener("mousedown", handleMouseDown);
+            .addEventListener("mousedown", toggleMouse);
         document
-            .getElementById(props.keyTrigger)
+            .getElementById(keyTrigger)
             .closest("div")
-            .addEventListener("mouseup", handleMouseUp);
+            .addEventListener("mouseup", toggleMouse);
 
         return (() => {
             document.removeEventListener("keydown", handleKeyPress);
             document.removeEventListener("keyup", handleKeyUnPress);
             document
-                .getElementById(props.keyTrigger)
+                .getElementById(keyTrigger)
                 .closest("div")
-                .removeEventListener("mousedown", handleMouseDown);
+                .removeEventListener("mousedown", toggleMouse);
             document
-                .getElementById(props.keyTrigger)
+                .getElementById(keyTrigger)
                 .closest("div")
-                .removeEventListener("mouseup", handleMouseUp);
+                .removeEventListener("mouseup", toggleMouse);
         });
 
     });
@@ -73,13 +70,13 @@ function DrumPad(props) {
         <div
             className={`drum-pad ${pressed ? 'pressed' : ''}`}
             onClick={playSound}
-            id={props.clipId}
+            id={clipId}
         >
-            {props.keyTrigger}
+            {keyTrigger}
             <audio
                 className="clip"
-                id={props.keyTrigger}
-                src={props.clip}
+                id={keyTrigger}
+                src={clip}
             />
         </div>
     )
