@@ -1,5 +1,5 @@
 import React from "react";
-import DrumPad from "./drumpad.js";
+import DrumPad from "./DrumPad.js";
 
 function PadBank({ currentPadBank, displayHandler, clearDisplay, volume }) {
 

@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
 import * as serviceWorker from "./serviceWorker";
-import PadBank from "./components/padbank.js";
-import Volume from "./components/volume.js";
+import PadBank from "./components/PadBank.js";
+import Volume from "./components/Volume.js";
 import BANKS from "./configs/banks.config.js";
 
 function App() {
