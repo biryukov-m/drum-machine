@@ -3,8 +3,9 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import * as serviceWorker from "./serviceWorker";
 import Volume from "./components/Volume.js";
-import BANKS from "./configs/banks.config.js";
 import DrumPad from "./components/DrumPad.js";
+import Header from "./components/Header.js";
+import BANKS from "./configs/banks.config.js";
 
 
 function App() {
@@ -42,18 +43,7 @@ function App() {
   return (
     <div className="machine-wrapper">
       <div className="drum-machine">
-        <div className="header">
-          <div className="logo">
-            <span className="top">Biryukov</span>
-            <span className="bottom">Professional</span>
-          </div>
-          <div className="display-wrapper">
-            <span className="display">
-              {display}
-            </span>
-          </div>
-          <span className="model">Flex 2000</span>
-        </div>
+        <Header display={display} />
         <div className="main-block">
           <div className="side">
             <Volume
