@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
 import * as serviceWorker from "./serviceWorker";
-import PadBank from "./components/PadBank.js";
 import Volume from "./components/Volume.js";
 import BANKS from "./configs/banks.config.js";
+import DrumPad from "./components/DrumPad.js";
+
 
 function App() {
   const [currentPadBank, setCurrentPadBank] = useState(BANKS.A);
@@ -23,6 +24,20 @@ function App() {
     setCurrentPadBank(BANKS[letter]);
     setDisplay(`Bank ${letter}`);
   }
+
+  const pads = currentPadBank.map(
+    ({ url, id, keyCode, keyTrigger }) => (
+      <DrumPad
+        clip={url}
+        clipId={id}
+        keyCode={keyCode}
+        keyTrigger={keyTrigger}
+        displayHandler={displayHandler}
+        clearDisplay={clearDisplay}
+        volume={volume}
+      />
+    )
+  );
 
   return (
     <div className="machine-wrapper">
@@ -64,14 +79,8 @@ function App() {
               </div>
             </div>
           </div>
-          <PadBank
-            currentPadBank={currentPadBank}
-            displayHandler={displayHandler}
-            clearDisplay={clearDisplay}
-            volume={volume}
-          />
+          <div className="drum-pads" >{pads}</div>
         </div>
-        <div className="footer"></div>
       </div>
     </div>
   );
