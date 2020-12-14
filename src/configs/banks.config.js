@@ -1,5 +1,5 @@
 
-const banks = {
+const BANKS = {
     A: [{
         keyCode: 81,
         keyTrigger: "Q",
@@ -230,6 +230,4 @@ const banks = {
     }]
 }
 
-console.log(banks.A[0])
-
-export default banks;
+export default BANKS;
