@@ -6,7 +6,7 @@ function Header({ display }) {
                 <span className="bottom">Professional</span>
             </div>
             <div className="display-wrapper">
-                <span className="display">
+                <span id="display" className="display">
                     {display}
                 </span>
             </div>

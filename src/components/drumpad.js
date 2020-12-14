@@ -72,12 +72,13 @@ function DrumPad({ clip, clipId, keyCode, keyTrigger, displayHandler, clearDispl
             onClick={playSound}
             id={clipId}
         >
-            {keyTrigger}
+
             <audio
                 className="clip"
                 id={keyTrigger}
                 src={clip}
             />
+            {keyTrigger}
         </div>
     )
 };

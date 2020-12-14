@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div className="machine-wrapper">
-      <div className="drum-machine">
+      <div className="drum-machine" id="drum-machine">
         <Header display={display} />
         <div className="main-block">
           <div className="side">
