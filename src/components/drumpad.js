@@ -33,34 +33,20 @@ function DrumPad({ clip, clipId, keyCode, keyTrigger, displayHandler, clearDispl
         }
     }
 
-    const toggleMouse = () => {
-        setPressed(!pressed);
-    }
-
-
     useEffect(() => {
+        const drumPadDiv = document.getElementById(keyTrigger).closest("div");
         document.addEventListener("keydown", handleKeyPress);
         document.addEventListener("keyup", handleKeyUnPress);
-        document
-            .getElementById(keyTrigger)
-            .closest("div")
-            .addEventListener("mousedown", toggleMouse);
-        document
-            .getElementById(keyTrigger)
-            .closest("div")
-            .addEventListener("mouseup", toggleMouse);
+        drumPadDiv.addEventListener("mousedown", () => { setPressed(true) });
+        drumPadDiv.addEventListener("mouseup", () => { setPressed(false) });
+        drumPadDiv.addEventListener("mouseleave", () => { setPressed(false) });
 
         return (() => {
-            document.removeEventListener("keydown", handleKeyPress);
-            document.removeEventListener("keyup", handleKeyUnPress);
-            document
-                .getElementById(keyTrigger)
-                .closest("div")
-                .removeEventListener("mousedown", toggleMouse);
-            document
-                .getElementById(keyTrigger)
-                .closest("div")
-                .removeEventListener("mouseup", toggleMouse);
+            document.addEventListener("keydown", handleKeyPress);
+            document.addEventListener("keyup", handleKeyUnPress);
+            drumPadDiv.addEventListener("mousedown", () => { setPressed(true) });
+            drumPadDiv.addEventListener("mouseup", () => { setPressed(false) });
+            drumPadDiv.addEventListener("mouseleave", () => { setPressed(false) });
         });
 
     });
@@ -79,6 +65,7 @@ function DrumPad({ clip, clipId, keyCode, keyTrigger, displayHandler, clearDispl
                 src={clip}
             />
             {keyTrigger}
+            <div className="progress-bar" id="progress-bar" />
         </div>
     )
 };
