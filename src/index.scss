@@ -215,12 +215,13 @@ html {
 }
 
 .progress-bar {
-  width: 100%;
+  width: 0;
   height: 3px;
   background: #cc2121eb;
   position: relative;
   bottom: -10px;
   align-self: flex-start;
+  transition: width 0.05s linear;
 }
 
 .footer {
