@@ -72,19 +72,19 @@ function DrumPad({ clip, clipId, keyCode, keyTrigger, displayHandler, clearDispl
 
 
         return (() => {
-            document.addEventListener("keydown", handleKeyPress);
-            document.addEventListener("keyup", handleKeyUnPress);
-            drumPadDiv.addEventListener("mousedown", () => { setPressed(true) });
-            drumPadDiv.addEventListener("mouseup", () => { setPressed(false) });
-            drumPadDiv.addEventListener("mouseleave", () => { setPressed(false) });
-            audio.addEventListener("playing", (_event) => {
+            document.removeEventListener("keydown", handleKeyPress);
+            document.removeEventListener("keyup", handleKeyUnPress);
+            drumPadDiv.removeEventListener("mousedown", () => { setPressed(true) });
+            drumPadDiv.removeEventListener("mouseup", () => { setPressed(false) });
+            drumPadDiv.removeEventListener("mouseleave", () => { setPressed(false) });
+            audio.removeEventListener("playing", (_event) => {
                 let duration = _event.target.duration;
                 advanceProgressBar(duration, audio);
             });
-            audio.addEventListener("pause", (_event) => {
+            audio.removeEventListener("pause", (_event) => {
                 clearTimeout(timer);
             });
-            audio.addEventListener("ended", () => { clearTimeout(timer) });
+            audio.removeEventListener("ended", () => { clearTimeout(timer) });
         });
 
     });
